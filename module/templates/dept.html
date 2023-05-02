@@ -1,0 +1,70 @@
+{% extends "module.html" %} {% block department %}
+<script>
+  function create() {
+    // create = document.getElementById('create-btn');
+    let create_div = document.getElementById("create-div");
+    create_div.style.display = "unset";
+    let create_btn = document.getElementById("create-btn");
+    let del_btn = document.getElementById("del-btn");
+    create_btn.style.display = "none";
+    del_btn.style.display = "none";
+    save_btn = document.getElementById("save-btn");
+    save_btn.style.display = "unset";
+    save_btn.addEventListener("click", function () {
+      let code = document.getElementById("code");
+      let name = document.getElementById("name");
+    });
+  }
+</script>
+<h2>Department</h2>
+<!-- buttons container starts -->
+<div class="create-del">
+  <span
+    ><button class="btn btn-primary" id="create-btn" onclick="create()">
+      Create
+    </button></span
+  >
+  <span><button class="btn btn-danger" id="del-btn">Delete</button></span>
+  <span
+    ><button class="btn btn-success" id="save-btn" style="display: none">
+      Save
+    </button></span
+  >
+</div>
+<!-- button container ends  -->
+
+<!-- creating department elements -->
+<div id="create-div" style="display: none">
+  <div class="code m-3">
+    <label for="code">Code</label>
+    <input type="text" name="code" id="code" required />
+  </div>
+  <div class="name m-3">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" required />
+  </div>
+</div>
+<!-- creating department elements ends  -->
+
+<!-- showing department table from the database -->
+<table class="m-3 p-3 border border-3">
+  <tr class="m-3 p-3 border border-3">
+    <td class="m-3 p-3 border border-3"><input type="checkbox" /></td>
+    <td class="m-3 p-3 border border-3">ID</td>
+    <td class="m-3 p-3 border border-3">Code</td>
+    <td class="m-3 p-3 border border-3">Name</td>
+  </tr>
+
+  {% for x in dept %}
+  <tr class="m-3 p-3 border border-3">
+    <td class="m-3 p-3 border border-3"><input type="checkbox" /></td>
+    <td class="m-3 p-3 border border-3">{{x.ID}}</td>
+    <td class="m-3 p-3 border border-3">{{x.Code}}</td>
+    <td class="m-3 p-3 border border-3">{{x.Name}}</td>
+  </tr>
+
+  {% endfor %}
+</table>
+<!-- showing department table from the database ends here -->
+
+{% endblock department %}

@@ -1,0 +1,35 @@
+{% extends 'module.html' %} {% block employee %}
+<h1>Employee</h1>
+<span><button class="btn btn-primary">Create</button></span>
+<span><button class="btn btn-danger">Delete</button></span>
+
+<div>
+    
+</div>
+
+
+<table class="m-3 p-3 border border-3">
+  <tr class="m-3 p-3 border border-3">
+    <td class="m-3 p-3 border border-3"><input type="checkbox" /></td>
+    <td class="m-3 p-3 border border-3">ID</td>
+    <td class="m-3 p-3 border border-3">ECode</td>
+    <td class="m-3 p-3 border border-3">Name</td>
+    <td class="m-3 p-3 border border-3">DOB</td>
+    <td class="m-3 p-3 border border-3">Dept</td>
+    <td class="m-3 p-3 border border-3">salary</td>
+  </tr>
+
+  {% for i in emp_list %}
+  <tr class="m-3 p-3 border border-3">
+    <td class="m-3 p-3 border border-3"><input type="checkbox" /></td>
+    <td class="m-3 p-3 border border-3">{{i.ID}}</td>
+    <td class="m-3 p-3 border border-3">{{i.ECode}}</td>
+    <td class="m-3 p-3 border border-3">{{i.Name}}</td>
+    <td class="m-3 p-3 border border-3">{{i.DOB}}</td>
+    <td class="m-3 p-3 border border-3">{{i.Dept}}</td>
+    <td class="m-3 p-3 border border-3">{{i.salary}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock employee %}
