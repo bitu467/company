@@ -6,7 +6,7 @@ from .models import Dept, Employee
 # Create your views here.
 
 
-def save(request):
+def saveDept(request):
     if request.method == 'POST':
         code = request.POST['code']
         name = request.POST['name']

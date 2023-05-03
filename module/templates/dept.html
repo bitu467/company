@@ -32,7 +32,7 @@
 
 <!-- creating department elements -->
 <div id="create-div" style="display: none">
-  <form method="POST" action='{% url 'save' %}'>
+  <form method="post" action="{% url 'saveDept' %}">
     {% csrf_token %}
     <div class="code m-3">
       <label for="code">Code</label>
