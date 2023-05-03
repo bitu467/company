@@ -11,8 +11,10 @@
     save_btn = document.getElementById("save-btn");
     save_btn.style.display = "unset";
     save_btn.addEventListener("click", function () {
-      let code = document.getElementById("code");
-      let name = document.getElementById("name");
+      let code = document.getElementById("code").value;
+      let name = document.getElementById("name").value;
+      console.log(code);
+      console.log(name);
     });
   }
 </script>
@@ -25,24 +27,32 @@
     </button></span
   >
   <span><button class="btn btn-danger" id="del-btn">Delete</button></span>
-  <span
-    ><button class="btn btn-success" id="save-btn" style="display: none">
-      Save
-    </button></span
-  >
 </div>
 <!-- button container ends  -->
 
 <!-- creating department elements -->
 <div id="create-div" style="display: none">
-  <div class="code m-3">
-    <label for="code">Code</label>
-    <input type="text" name="code" id="code" required />
-  </div>
-  <div class="name m-3">
-    <label for="name">Name</label>
-    <input type="text" name="name" id="name" required />
-  </div>
+  <form method="POST" action='{% url 'save' %}'>
+    {% csrf_token %}
+    <div class="code m-3">
+      <label for="code">Code</label>
+      <input type="text" name="code" id="code" required />
+    </div>
+    <div class="name m-3">
+      <label for="name">Name</label>
+      <input type="text" name="name" id="name" required />
+    </div>
+    <span>
+      <button
+        type="submit"
+        class="btn btn-success"
+        id="save-btn"
+        style="display: none"
+      >
+        Save
+      </button>
+    </span>
+  </form>
 </div>
 <!-- creating department elements ends  -->
 

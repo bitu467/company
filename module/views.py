@@ -6,6 +6,15 @@ from .models import Dept, Employee
 # Create your views here.
 
 
+def save(request):
+    if request.method == 'POST':
+        code = request.POST['code']
+        name = request.POST['name']
+        dept = Dept(Code=code, Name=name)
+        dept.save()
+    return render(request, 'dept.html')
+
+
 def module(request):
     template = loader.get_template('module.html')
     # new added
