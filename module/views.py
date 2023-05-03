@@ -7,12 +7,14 @@ from .models import Dept, Employee
 
 
 def saveDept(request):
+    output = ''
     if request.method == 'POST':
         code = request.POST['code']
         name = request.POST['name']
         dept = Dept(Code=code, Name=name)
         dept.save()
-    return render(request, 'dept.html')
+        output = "Department created"
+    return render(request, 'module.html', {'output': output})
 
 
 def module(request):
