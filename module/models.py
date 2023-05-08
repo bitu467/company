@@ -7,6 +7,7 @@ class Dept(models.Model):
     ID = models.BigAutoField(primary_key=True, auto_created=True)
     Code = models.CharField(max_length=255)
     Name = models.CharField(max_length=255)
+    is_selected = models.BooleanField(default=False)
     Create_user = models.TextField(null=True)
     Create_Date = models.DateField(null=True)
 

@@ -18,9 +18,8 @@
   <span
     ><button class="btn btn-primary" id="create-btn" onclick="create()">
       Create
-    </button></span
-  >
-  <span><button class="btn btn-danger" id="del-btn">Delete</button></span>
+    </button>
+  </span>
 </div>
 <!-- button container ends  -->
 
@@ -51,24 +50,31 @@
 <!-- creating department elements ends  -->
 
 <!-- showing department table from the database -->
-<table class="m-3 p-3 border border-3">
-  <tr class="m-3 p-3 border border-3">
-    <td class="m-3 p-3 border border-3"><input type="checkbox" /></td>
-    <td class="m-3 p-3 border border-3">ID</td>
-    <td class="m-3 p-3 border border-3">Code</td>
-    <td class="m-3 p-3 border border-3">Name</td>
-  </tr>
+<form id="delete-form" action=" {% url 'delete_checked' %} " method="POST">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-danger mt-1" id="del-btn">Delete</button>
+  <table class="m-3 p-3 border border-3">
+    <tr class="m-3 p-3 border border-3">
+      <td class="m-3 p-3 border border-3"><input type="checkbox" /></td>
+      <td class="m-3 p-3 border border-3">ID</td>
+      <td class="m-3 p-3 border border-3">Code</td>
+      <td class="m-3 p-3 border border-3">Name</td>
+    </tr>
 
-  {% for x in dept %}
-  <tr class="m-3 p-3 border border-3">
-    <td class="m-3 p-3 border border-3"><input type="checkbox" /></td>
-    <td class="m-3 p-3 border border-3">{{x.ID}}</td>
-    <td class="m-3 p-3 border border-3">{{x.Code}}</td>
-    <td class="m-3 p-3 border border-3">{{x.Name}}</td>
-  </tr>
+    {% for x in dept %}
+    <tr class="m-3 p-3 border border-3">
+      <td class="m-3 p-3 border border-3">
+        <input type="checkbox" name="selected_items" value="{{x.ID}}" />
+      </td>
+      <td class="m-3 p-3 border border-3">{{x.ID}}</td>
+      <td class="m-3 p-3 border border-3">{{x.Code}}</td>
+      <td class="m-3 p-3 border border-3">{{x.Name}}</td>
+    </tr>
 
-  {% endfor %}
-</table>
+    {% endfor %}
+  </table>
+</form>
+
 <!-- showing department table from the database ends here -->
 
 {% endblock department %}

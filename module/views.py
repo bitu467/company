@@ -6,6 +6,17 @@ from .models import Dept, Employee
 # Create your views here.
 
 
+def delete_checked(request):
+    if request.method == "POST":
+        selected_item_ids = request.POST.getlist('selected_items')
+        print('selected id :' + str(selected_item_ids))
+        selected_item_ids = [int(x) for x in selected_item_ids]
+        print('list of integers' + str(selected_item_ids))
+        Dept.objects.filter(ID__in=selected_item_ids).delete()
+    output = "Department Deleted"
+    return render(request, 'module.html', {'output': output})
+
+
 def saveDept(request):
     output = ''
     if request.method == 'POST':
