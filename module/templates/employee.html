@@ -1,12 +1,53 @@
 {% extends 'module.html' %} {% block employee %}
+<script>
+  function create() {
+    let id = document.getElementById("create-emp");
+    id.style.display = "unset";
+    let createbtn = document.getElementById("create-btn");
+    let deletebtn = document.getElementById("delete-btn");
+    createbtn.style.display = "none";
+    deletebtn.style.display = "none";
+  }
+</script>
 <h1>Employee</h1>
-<span><button class="btn btn-primary">Create</button></span>
-<span><button class="btn btn-danger">Delete</button></span>
+<span
+  ><button class="btn btn-primary" id="create-btn" onclick="create()">
+    Create
+  </button></span
+>
+<span><button class="btn btn-danger" id="delete-btn">Delete</button></span>
 
-<div>
-    
+<div id="create-emp" style="display: none">
+  <form action=" {% url 'saveEmp' %} " method="post">
+    {% csrf_token %}
+    <div class="ECode m-2">
+      <label for="ECode">ECode : </label>
+      <input type="text" name="ECode" id="ECode" />
+    </div>
+
+    <div class="name m-2">
+      <label for="name">Name : </label>
+      <input type="text" name="name" id="name" />
+    </div>
+
+    <div class="dob m-2">
+      <label for="dob">DOB : </label>
+      <input type="date" name="dob" id="dob" />
+    </div>
+
+    <div class="dept m-2">
+      <label for="dept">Dept : </label>
+      <input type="text" name="dept" id="dept" />
+    </div>
+
+    <div class="salary m-2">
+      <label for="salary">Salary : </label>
+      <input type="number" name="salary" id="salary" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
 </div>
-
 
 <table class="m-3 p-3 border border-3">
   <tr class="m-3 p-3 border border-3">
